@@ -1,2 +1,0 @@
-# atoz
-Atoz Interview Testing
