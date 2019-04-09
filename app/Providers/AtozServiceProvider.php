@@ -26,16 +26,16 @@ class AtozServiceProvider extends ServiceProvider
     public function boot()
     {
         //
-		$halaman = '';
+		$page = '';
 		if(Request::segment(1) == 'prepaid_balance') {
-			$halaman = 'prepaid_balance';
+			$page = 'prepaid_balance';
 		}
 		if(Request::segment(1) == 'product') {
-			$halaman = 'product';
+			$page = 'product';
 		}
 		if(Request::segment(1) == 'order') {
-			$halaman = 'product';
+			$page = 'order';
 		}
-		view()->share('halaman', $halaman);
+		view()->share('page', $page);
     }
 }
