@@ -1,7 +1,7 @@
 @extends('template')
 
 @section('main')
-	<div id="siswa">
+	<div id="order_success">
 		<h2>Success!</h2>
 		{!! Form::open(['method'=>'PATCH', 'action'=>['TransactionController@pay', $transaction->id]]) !!}
 		<table class="table table-striped">
