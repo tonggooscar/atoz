@@ -137,7 +137,7 @@ return [
 		],
 		
 		'id_balance' => [
-			'required' => 'The :attribute field is required 123.'
+			'required' => 'The Balance field is required.'
 		]
     ],
 
