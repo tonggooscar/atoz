@@ -128,9 +128,17 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
-        ],
+        //'attribute-name' => [
+        //    'rule-name' => 'custom-message',
+        //],
+        
+        'mobile_number' => [
+			'regex' => 'The :attribute format must be prefix with 081',
+		],
+		
+		'id_balance' => [
+			'required' => 'The :attribute field is required 123.'
+		]
     ],
 
     /*
