@@ -13,7 +13,7 @@ class BalanceTableSeeder extends Seeder
     public function run()
     {
         //
-		DB::table('balance')->truncate();
+		///DB::table('balance')->truncate();
  
 		Balance::create(array(
 			'balance_value'=>10000
