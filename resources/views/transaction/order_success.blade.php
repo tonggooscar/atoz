@@ -11,7 +11,7 @@
 			</tr>
 			<tr>
 				<th>Total</th>
-				<td>{{$transaction->shopping_type == 'product' ? $transaction->price : $transaction->balance->balance_value}}</td>
+				<td>{{$transaction->price}}</td>
 			</tr>
 			<tr>
 				<th>&nbsp;</th>
