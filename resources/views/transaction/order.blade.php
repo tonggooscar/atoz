@@ -19,7 +19,7 @@
 					@foreach($transaction_list as $transaction)
 					<tr>
 						<td>{{$transaction->order_number}}</td>
-						<td>{{$transaction->shopping_type == 'product' ? $transaction->price : $transaction->balance->balance_value}}</td>
+						<td>{{$transaction->price}}</td>
 						<td>{{$transaction->shopping_type == 'product' ? $transaction->product.' that costs '.$transaction->price : $transaction->balance->balance_value.'  for '.$transaction->mobile_number }}</td>
 						<td>
 							<div class="box-button">
