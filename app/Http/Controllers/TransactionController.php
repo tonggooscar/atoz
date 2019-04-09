@@ -92,11 +92,9 @@ class TransactionController extends Controller
     {
         //
 		$input = $request->all();
-		$transactionID = new Transaction();
-		$lastTransactionID = $transactionID->orderBy('id', 'DESC')->pluck('order_number')->first();
-		$newTransactionID = (!isset($lastTransactionID) || !$lastTransactionID) ? 1000000000 : $lastTransactionID + 1;
-		$input['order_number'] = $newTransactionID;
+		$input['order_number'] = Helper::random_strings(10);
 		$input['id_users'] = Auth::user()->id;
+		
 		
 		if($request->shopping_type == 'product') {
 			$validator = Validator::make($input, [
@@ -107,14 +105,18 @@ class TransactionController extends Controller
 			if($validator->fails()) {
 				return redirect('product')->withInput()->withErrors($validator);
 			}
+			$input['price'] = $input['price'] + 10000;
 		} else {
+			
 			$validator = Validator::make($input, [
-				'mobile_number' => 'required|numeric|digits_between:7,12',			
-				'id_balance' => 'required'
+				'mobile_number' => 'required|numeric|digits_between:7,12|regex:/(081)[0-9]{3,13}/',			
+				'id_balance' => 'required',
 			]);
 			if($validator->fails()) {
 				return redirect('prepaid_balance')->withInput()->withErrors($validator);
 			}
+			$balanceByID = Balance::findOrFail($input['id_balance']);
+			$input['price'] = $balanceByID->balance_value + ( (5/100) * $balanceByID->balance_value);
 		}
 		
 		$transaction = Transaction::create($input);
